@@ -1,0 +1,99 @@
+<md-card class="aplsize"> 
+<md-toolbar class="demo-toolbar md-default-theme">
+	
+	<div class="md-toolbar-tools">
+		<span class="ng-binding">Konfigurácia pre rating plochy.xls</span>
+	</div>	
+
+	<form name="updateForm">
+		<md-content>
+			<div class="md-padding" layout="row">
+				<md-input-container flex="10">
+					<label>Názov listu</label>
+					<input name="title" ng-model="items.title">
+				</md-input-container>
+		
+				<md-input-container flex="10">
+					<label>Kód plochy</label> 
+					<input name="spcode" ng-model="items.spcode">
+				</md-input-container>
+	
+				<md-input-container flex="10">
+					<label>Adresa</label> 
+					<input name="address" ng-model="items.address">
+				</md-input-container>
+	
+				<md-input-container flex="10">
+					<label>Rozmer</label> 
+					<input name="dimension" ng-model="items.dimension">
+				</md-input-container>
+				
+				<md-input-container flex="10">
+					<label>Poloha</label> 
+					<input name="location" ng-model="items.location">
+				</md-input-container>
+
+				<md-input-container flex="10">
+					<label>Umiestnenie</label> 
+					<input name="place" ng-model="items.place">
+				</md-input-container>
+				
+			</div>
+						
+
+			<div class="md-padding" layout="row">
+				<md-input-container flex="10">
+					<label>Podtitulok</label>
+					<input name="subtitle" ng-model="items.subtitle">
+				</md-input-container>
+				<md-input-container flex="10">
+					<label>Net cena</label>
+					<input name="netprice" ng-model="items.netprice">
+				</md-input-container>
+				<md-input-container flex="10">
+					<label>Celk.poč.vozidiel</label>
+					<input name="cntveh" ng-model="items.cntveh">
+				</md-input-container>
+				<md-input-container flex="10">
+					<label>Priem.počet pasaž.</label>
+					<input name="avgnumpsg" ng-model="items.avgnumpsg">
+				</md-input-container>
+
+				<md-input-container flex="10">
+					<label>Potemtial Reach</label>
+					<input name="pr" ng-model="items.pr">
+				</md-input-container>
+				
+				<md-input-container flex="10">
+					<label>Cost per 1000</label>
+					<input name="cpt" ng-model="items.cpt">
+				</md-input-container>
+
+				<md-input-container flex="10">
+					<label>Obrázok</label>
+					<input name="picture" ng-model="items.picture">
+				</md-input-container>
+				<md-input-container flex="10">
+					<label>Graf topleft</label>
+					<input name="graphtl" ng-model="items.graphtl">
+				</md-input-container>
+				<md-input-container flex="10">
+					<label>Graf rightbottom</label>
+					<input name="graphrb" ng-model="items.graphrb">
+				</md-input-container>
+
+			</div>
+		
+			<div layout="row" class="md-padding" layout-margin layout-align="end end">
+			 	<md-list>
+					<md-item><md-button md-no-ink class="md-raised md-primary" ng-click="save($event)">Uložiť </md-button></md-item>
+				</md-list>
+			</div>
+		</md-content>
+	</form>
+</div>
+</md-toolbar>
+</md-card>
+
+</div>
+</div>

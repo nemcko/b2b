@@ -1,0 +1,56 @@
+<md-card class="aplsize01"> 
+<md-toolbar class="demo-toolbar md-default-theme">	
+	<div class="md-toolbar-tools">
+		<span class="ng-binding">Nastavenie pre e-mail</span>
+	</div>	
+</md-toolbar>
+
+<form name="updateForm">
+	<md-content layout-padding>
+		<md-tabs style="height:500px;">
+			<md-tab label="Rating plochy">
+				<md-input-container>
+					<label>Adresa pre odosielanie</label>
+					<input required type="email" name="reflSender" ng-model="items.reflSender">
+					<div ng-messages="updateForm.reflSender.$error">
+						<div ng-message="required">Je potrebné zadať.</div>
+					</div>
+				</md-input-container>
+				
+<!-- 				<md-input-container> -->
+<!-- 					<label>Kópia emailu na adresu</label> -->
+<!-- 					<input name="reflCC" ng-model="items.reflCC"> -->
+<!-- 				</md-input-container> -->
+	
+				<md-input-container>
+					<label>Text správy pre rating plochy</label>
+					<textarea name="reflMsg" ng-model="items.reflMsg" rows="8"></textarea>
+				</md-input-container>
+			</md-tab>
+			<md-tab label="Štat.kampane">
+				<md-input-container>
+					<label>Adresa pre odosielanie</label>
+					<input type="email" name="statSender" ng-model="items.statSender">
+				</md-input-container>
+				
+<!-- 				<md-input-container> -->
+<!-- 					<label>Kópia emailu na adresu</label> -->
+<!-- 					<input name="statCC" ng-model="items.statCC"> -->
+<!-- 				</md-input-container> -->
+	
+				<md-input-container>
+					<label>Text správy pre štatistiku kampane</label>
+					<textarea name="statMsg" ng-model="items.statMsg" rows="8"></textarea>
+				</md-input-container>
+	
+			</md-tab>
+		</md-tabs>
+	
+		<div layout="row" layout-align="end end">
+		 	<md-list>
+				<md-item><md-button md-no-ink class="md-raised md-primary" ng-click="save($event)" ng-disabled="updateForm.$invalid">Uložiť </md-button></md-item>
+			</md-list>
+		</div>
+	</md-content>
+</form>	
+</md-card>

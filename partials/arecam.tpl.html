@@ -1,0 +1,51 @@
+<md-card> 
+	<md-toolbar class="demo-toolbar md-default-theme">
+		<div class="md-toolbar-tools">
+			<div class="md-tile-left">
+				<ng-md-icon icon="find_in_page" size="36" style="fill: silver" flex></ng-md-icon>
+			</div>
+			<md-input-container flex="33">
+				<label class="aplsearch">Vyhľadať</label> 
+				<input type="text" ng-model="search"> 
+			</md-input-container>
+		</div>
+				
+		<md-content class="md-padding apllist">
+			<md-list> 
+				<md-list-item ng-repeat="item in items | filter:search"> 
+					<md-item-content ng-if="!item._expanded">
+						<div class="md-tile-content" layout="row" layout-align="start center" layout-wrap layout-margin layout-fill layout-padding>
+							<div>
+								<small><small>Plocha:</small></small><br/> 
+								<big>{{item.spcode}}</big>
+							</div>
+							&nbsp;&nbsp;
+							<div>
+								<small><small>Inštalované kamery:</small></small><br/> 
+								<div layout="row" layout-sm="column" layout-align="start start">
+									<div ng-repeat="camera in cameras">
+										<div class="aplbox" ng-if="!isCamDisabled(item.cameras,camera)">{{camera}}</div>
+									</div>
+								</div>					
+							</div>
+						</div>
+						<div class="md-tile-right" ng-if="!item._expanded">
+							<md-button class="md-fab md-hue-1 aplbtnsize" aria-label="Otvoriť detail"
+								ng-click="openDetail(item)">
+								<ng-md-icon icon="edit"></ng-md-icon>
+								<md-tooltip class="apltooltip">Zmeniť</md-tooltip>
+							</md-button>
+						</div>
+
+						
+					</md-item-content>
+					
+					<div ng-if="item._expanded">
+						<div ng-include="'partials/areacam_det.tpl.html'"></div>
+					</div>
+					
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</md-toolbar>
+</md-card>

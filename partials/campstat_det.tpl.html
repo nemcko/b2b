@@ -1,0 +1,90 @@
+<div layout="column" class="apldetail">
+	<md-card-content>
+		<div ng-if="detailType=='stastmon'" ng-init="item.typestat='xxx'">
+			<h4>Mesačná kampaň {{item.name}}</h4>
+			<md-radio-group name="typestat" ng-model="item.typestat">
+				<div layout="row" layout-wrap ng-model="ardata.month" ng-repeat="ardata in item.arearent">
+					<div><small><i>{{ardata.year}}&nbsp;:&nbsp;</i></small></div> 
+					<md-radio-button ng-if="ardata.m01" value="{{ardata.year}}-01"><small>Jan</small></md-radio-button>			
+					<md-radio-button ng-if="ardata.m02" value="{{ardata.year}}-02"><small>Feb</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m03" value="{{ardata.year}}-03"><small>Mar</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m04" value="{{ardata.year}}-04"><small>Apr</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m05" value="{{ardata.year}}-05"><small>Máj</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m06" value="{{ardata.year}}-06"><small>Jún</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m07" value="{{ardata.year}}-07"><small>Júl</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m08" value="{{ardata.year}}-08"><small>Aug</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m09" value="{{ardata.year}}-09"><small>Sep</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m10" value="{{ardata.year}}-10"><small>Okt</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m11" value="{{ardata.year}}-11"><small>Nov</small></md-radio-button>
+					<md-radio-button ng-if="ardata.m12" value="{{ardata.year}}-12"><small>Dec</small></md-radio-button>					
+				</div>
+			</md-radio-group>
+		</div>
+		
+		<div ng-if="detailType=='stastall'" ng-init="item.typestat='all'">
+			<h4>Štatistika kampane {{item.name}}</h4>
+			<small>
+				<div layout="row" layout-wrap ng-repeat="ardata in item.arearent">
+					<div>{{ardata.year}}: &nbsp;</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m01}">Jan</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m02}">Feb</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m03}">Mar</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m04}">Apr</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m05}">Maj</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m06}">Jún</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m07}">Júl</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m08}">Aug</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m09}">Sep</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m10}">Okt</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m11}">Nov</div>
+					<div class="aplbox" ng-class="{aplbox2: ardata.m12}">Dec</div>
+				</div>
+			</small>
+			<br/>
+		</div>
+
+		
+		<div ng-switch="item.typestat">
+			<small ng-switch-when="xxx" class="aplwarn">*** Vyberte mesiac pre zobrazenie údajov ***</small>
+			<small ng-switch-default>
+				<md-button class="md-primary" 
+					ng-href="api/index.php/statist/{{item.id}}/I/{{item.typestat}}" target="_blank">
+					<md-icon md-svg-src="img/icons/document.svg" class="aplicon"></md-icon>
+					Zobraziť
+				</md-button>
+				<md-button class="md-primary" 
+					ng-href="api/index.php/statist/{{item.id}}/D/{{item.typestat}}" target="_self">
+					<md-icon md-svg-src="img/icons/pdf.svg" class="aplicon"></md-icon>
+					Uložiť PDF
+					<md-tooltip class="apltooltip">Uložiť do PDF súboru</md-tooltip>
+				</md-button>
+				<md-button class="md-primary" 
+					ng-href="api/index.php/statxls/{{item.id}}/{{item.typestat}}" target="_self">
+					<md-icon md-svg-src="img/icons/xlsx.svg" class="aplicon"></md-icon>
+					Uložiť XLSX
+					<md-tooltip class="apltooltip">Uložiť do XLSX súboru</md-tooltip>
+				</md-button>
+				
+				<md-button class="md-primary"
+					ng-click="ShowEmailDlg($event,item)">
+					<md-icon md-svg-src="img/icons/opened.svg" class="aplicon"></md-icon>
+					Poslať
+					<md-tooltip class="apltooltip">Poslať XLSX emailom</md-tooltip>
+				</md-button>
+			</small>
+		</div>									
+		
+		<div layout="row" layout-align="end end" layout-margin layout-fill layout-padding>
+			<md-item>
+				<md-button class="md-fab md-accent md-hue-2 aplbtnsize" aria-label="Zatvoriť"
+					ng-click="closeDetailEx(item)">
+					<ng-md-icon icon="clear"></ng-md-icon>
+					<md-tooltip class="apltooltip">
+						Zatvoriť
+					</md-tooltip>
+				</md-button>
+			</md-item>
+		</div>
+		
+	</md-card-content>
+</div>

@@ -1,0 +1,113 @@
+<md-card> 
+	<md-toolbar class="demo-toolbar md-default-theme">
+		<div class="md-toolbar-tools ">
+			<div class="md-tile-left">
+				<ng-md-icon ng-if="!processData" icon="find_in_page" size="36" style="fill: silver" flex></ng-md-icon>
+				<md-progress-circular ng-if="processData" class=" md-hue-3" md-mode="indeterminate"></md-progress-circular>
+			</div>
+			<md-radio-group ng-model="selY" layout="row" layout-align="start start">
+				<md-radio-button ng-repeat="appYear in appYears" ng-value="{{appYear}}">{{appYear}}</md-radio-button>
+			</md-radio-group>
+
+			<div flex="57">
+<!-- 				<md-button class="md-fab md-hue-1 aplbtnsize" aria-label="Nová položka" -->
+<!-- 					ng-if="!processData" ng-click="Calculate()"> -->
+<!-- 					<ng-md-icon icon="keyboard"></ng-md-icon> -->
+<!-- 					<md-tooltip class="apltooltip"> -->
+<!-- 						Výpočet údajov -->
+<!-- 					</md-tooltip> -->
+<!-- 				</md-button> -->
+				<md-button class="md-fab md-hue-1 aplbtnsize" style="float: right !important;"
+					ng-click="ShowLog($event)">
+					<ng-md-icon icon="people_outline"></ng-md-icon>
+					<md-tooltip class="apltooltip">Zobraziť log</md-tooltip>
+				</md-button>
+			</div>
+		</div>
+								
+	</md-toolbar>
+	<md-content class="md-padding apllist"> 
+	
+		<md-tabs md-selected="selM" flex>
+			<md-tab ng-repeat="tab in tabs" label="{{tab.title}}">
+				<div class="tab{{$index%4}}" layout="column">	
+					<md-divider></md-divider> <br/>
+					<div>
+						<md-list>
+							<md-list-item ng-repeat="item in items">
+								Plocha: <big>{{item.spcode}}</big><br/>
+
+								<md-button class="md-primary" ng-href="api/index.php/areafiles/{{item.spcode.replace('/','@@')}}/rl/{{selY}}/{{selM+1}}" target="_blank">
+									<ng-md-icon icon="assignment"></ng-md-icon>
+									Zobraziť náhľad
+								</md-button>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<md-button class="md-primary md-hue-1" ng-href="api/index.php/areafiles/{{item.spcode.replace('/','@@')}}/rl/{{selY}}/{{selM+1}}/save" target="_self">
+									<ng-md-icon icon="save"></ng-md-icon>
+									Uložiť do súboru
+								</md-button>
+								&nbsp;&nbsp;&nbsp;&nbsp;										
+								<md-button class="md-primary" aria-label="Poslať e-mail"
+									ng-click="ShowEmailDlg($event,item)">
+									<ng-md-icon icon="local_post_office"></ng-md-icon>
+									Poslať e-mail
+								</md-button>
+								<br/><br/>
+							</md-list-item>
+							
+						</md-list>
+					</div>
+
+
+
+
+
+
+
+
+				</div>
+			</md-tab>
+		</md-tabs>
+	
+
+	</md-content>
+
+</md-card>
+
+<!-- <md-card>  -->
+<!-- 	<md-toolbar class="demo-toolbar md-default-theme"> -->
+<!-- 		<div class="md-toolbar-tools"> -->
+<!-- 			<div class="md-tile-left"> -->
+<!-- 				<ng-md-icon icon="find_in_page" size="36" flex></ng-md-icon> -->
+<!-- 			</div> -->
+<!-- 			<md-radio-group ng-model="selY" layout="row" layout-align="start start"> -->
+<!-- 				<md-radio-button ng-repeat="appYear in appYears" ng-value="{{appYear}}">{{appYear}}</md-radio-button> -->
+<!-- 			</md-radio-group> -->
+<!-- 			<div ng-include="'partials/panel_new.tpl.html'" flex="57"></div> -->
+<!-- 		</div> -->
+				
+<!-- 		<md-content class="md-padding apllist"> -->
+<!-- 			<md-list>  -->
+<!-- 				<md-item ng-repeat="item in items | filter:search">  -->
+<!-- 					<md-item-content> -->
+<!-- 						<div class="md-tile-content aplcard"> -->
+<!-- 							<small><small>Plocha:</small></small>  -->
+<!-- 							<h3>{{item.spcode}}</h3> -->
+<!-- 							<p> -->
+<!-- 								<small>Vytvárané údajové súbory:</small>  -->
+<!-- 								<div layout="row" layout-sm="column" layout-align="start center" layout-margin > -->
+<!-- 									<small> -->
+<!-- 									<md-button flex class="md-raised md-primary" ng-click="xxx(i=item.spcode,m=camera)">{{item.spcode}}P_01_15.xls</md-button> -->
+<!-- 									<md-button flex class="md-raised md-primary" ng-click="xxx(i=item.spcode,m=camera)">{{item.spcode}}V_01_15.xls</md-button> -->
+<!-- 									<md-button flex class="md-raised md-primary" ng-click="xxx(i=item.spcode,m=camera)">{{item.spcode}}G_01_15.jpg</md-button> -->
+<!-- 									</small> -->
+<!-- 								</div> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<!-- 					</md-item-content> -->
+<!-- 					<md-divider> -->
+<!-- 				</md-item> -->
+<!-- 			</md-list> -->
+<!-- 		</md-content> -->
+<!-- 	</md-toolbar> -->
+<!-- </md-card> -->

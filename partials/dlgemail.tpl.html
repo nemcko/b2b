@@ -1,0 +1,44 @@
+<md-dialog class="apldialog">
+	<md-toolbar>
+		<h2 class="md-toolbar-tools">
+			Email
+		</h2>
+	</md-toolbar>
+	<md-content class="sticky-container">
+<form name="myForm">
+		<md-input-container>
+			<label>E-mailová adresa príjemcu</label>
+			<input name="sendto" ng-model="item.sendto" type="email" ng-disabled="item.disable" required>
+		</md-input-container>
+		
+
+		<md-input-container>
+			<label>Text správy</label>
+			<textarea ng-model="item.msg" required></textarea>
+		</md-input-container>			
+		
+		<small>
+		<md-list>
+			<md-list-item class="md-3-line" ng-repeat="attachment in item.attachments"> 
+				<md-item-content>
+					<ng-md-icon icon="attach_file"></ng-md-icon>
+					<div class="md-list-item-text">
+						{{ attachment.filename }}
+					</div>
+				</md-item-content>
+			</md-list-item>
+		</md-list>
+		</small>
+			
+</form>
+ 	</md-content>
+	<div class="md-actions" layout="row">
+		<span flex></span>
+		<md-button ng-click="cancel()">
+			Návrat
+		</md-button>
+		<md-button ng-click="answer(item)" class="md-primary" ng-disabled="myForm.$invalid">
+			Odoslať
+		</md-button>
+	</div>
+</md-dialog>

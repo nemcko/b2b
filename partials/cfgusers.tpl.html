@@ -1,0 +1,38 @@
+<md-card class="aplsize01"> 
+	<md-toolbar class="demo-toolbar md-default-theme">
+		<div class="md-toolbar-tools">
+			<div class="md-tile-left">
+				<ng-md-icon icon="find_in_page" size="36" style="fill: silver" flex></ng-md-icon>
+			</div>
+			<md-input-container flex="33"> 
+				<label class="aplsearch">Vyhľadať</label> 
+				<input type="text" ng-model="search"> 
+			</md-input-container>
+			<div ng-include="'partials/panel_new.tpl.html'" flex="57"></div>
+		</div>
+
+				
+		<md-content class="md-padding">
+			<div ng-if="expandedNew">
+				<div ng-include="'partials/cfgusers_det.tpl.html'"></div>
+			</div>
+
+			<md-list> 
+				<md-item ng-repeat="item in items | filter:search"> 
+					<div ng-if="!item._expanded" ng-mouseover="hover = true" ng-mouseout="hover = false">
+						<md-item-content>
+							<div class="md-tile-content">
+								<h4>{{item.UserName}}</h4>
+								<p>{{item.UserDescription}}</p>
+							</div>
+							<div ng-include="'partials/panel_right.tpl.html'"></div>						</md-item-content>
+						<md-divider>
+					</div> 
+					<div ng-if="item._expanded">
+						<div ng-include="'partials/cfgusers_det.tpl.html'"></div>
+					</div>
+				</md-item>
+			</md-list>
+		</md-content>
+	</md-toolbar>
+</md-card>

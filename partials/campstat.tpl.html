@@ -1,0 +1,124 @@
+<md-card class="aplsize"> 
+	<md-toolbar class="demo-toolbar md-default-theme">
+		<div class="md-toolbar-tools">
+			<div class="md-tile-left">
+				<ng-md-icon ng-if="!processData" icon="find_in_page" size="36" style="fill: silver" flex></ng-md-icon>
+				<md-progress-circular ng-if="processData" class=" md-hue-3" md-mode="indeterminate"></md-progress-circular>
+			</div>
+			<md-input-container flex="33"> 
+				<label class="aplsearch">Vyhľadať</label> 
+				<input type="text" ng-model="search"> 
+			</md-input-container>
+			<div flex="57">
+				<md-button class="md-fab md-hue-2 aplbtnsize" style="float: right !important;" aria-label="Nová položka"
+					ng-if="!expandedNew && detailType==1" ng-click="openDetail()">
+					<ng-md-icon icon="my_library_add"></ng-md-icon>
+					<md-tooltip class="apltooltip">
+						Nový záznam
+					</md-tooltip>
+				</md-button>
+				<md-button class="md-fab md-hue-1 aplbtnsize" style="float: right !important;"
+					ng-click="ShowLog($event)">
+					<ng-md-icon icon="people_outline"></ng-md-icon>
+					<md-tooltip class="apltooltip">Zobraziť log</md-tooltip>
+				</md-button>
+			</div>
+		</div>
+
+		
+		<md-content class="md-padding">
+			<md-list> 
+				<md-item ng-repeat="item in items | filter:search"> 
+					<div ng-if="!item._expanded" ng-mouseover="hover = true" ng-mouseout="hover = false">
+						<md-item-content>
+							<div class="md-tile-left">
+								<img ng-src="{{item.image}}" class="aplimage" alt="{{item.name}}">
+							</div>
+
+							<div class="md-tile-content">
+								<h4><b>{{item.name}}</b> ({{item.campcode}})</h4>
+								<small>
+									<div layout="row" layout-wrap ng-repeat="ardata in item.arearent">
+										<div>{{ardata.year}}: &nbsp;</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m01}">Jan</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m02}">Feb</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m03}">Mar</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m04}">Apr</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m05}">Maj</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m06}">Jún</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m07}">Júl</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m08}">Aug</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m09}">Sep</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m10}">Okt</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m11}">Nov</div>
+										<div class="aplbox" ng-class="{aplbox2: ardata.m12}">Dec</div>
+									</div>
+								</small>
+							</div>
+							<div class="md-tile-right">
+								<md-button class="md-fab md-hue-1 aplbtnsize" aria-label="Zmena"
+									ng-click="openDetailEx('stastmon',item)">
+									<ng-md-icon icon="filter_1"></ng-md-icon>
+									<md-tooltip class="apltooltip">Mesačná</md-tooltip>
+								</md-button>
+								<md-button class="md-fab md-hue-1 aplbtnsize" aria-label="Trvanie"
+									ng-click="openDetailEx('stastall',item)">
+									<ng-md-icon icon="my_library_books"></ng-md-icon>
+									<md-tooltip class="apltooltip">Celková</md-tooltip>
+								</md-button>
+								<div>&nbsp;&nbsp;</div>
+							</div>
+
+						</md-item-content>
+					</div> 
+					<div ng-if="item._expanded">
+						<div ng-include="'partials/campstat_det.tpl.html'"></div>
+					</div>
+				</md-item>
+			</md-list>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+<!-- 			<div ng-if="expandedNew"> -->
+<!-- 				<div ng-include="'partials/arearent_det.tpl.html'"></div> -->
+<!-- 			</div> -->
+
+<!-- 			<md-list>  -->
+<!-- 				<md-item ng-repeat="item in items | filter:search">  -->
+<!-- 					<div ng-if="!item._expanded" ng-mouseover="hover = true" ng-mouseout="hover = false"> -->
+<!-- 						<md-item-content> -->
+<!-- 							<div class="md-tile-content"> -->
+<!-- 								<div>Plocha: {{item.spcode}},  Zákazník: {{item.custcode}}</div> -->
+<!-- 								<div layout="row" layout-align="start center"> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m01}">Jan</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m02}">Feb</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m03}">Mar</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m04}">Apr</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m05}">Maj</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m06}">Jún</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m07}">Júl</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m08}">Aug</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m09}">Sep</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m10}">Okt</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m11}">Nov</div> -->
+<!-- 									<div class="aplbox" ng-class="{aplbox2: item.m12}">Dec</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div ng-include="'partials/panel_right.tpl.html'"></div> -->
+<!-- 						</md-item-content> -->
+<!-- 					</div>  -->
+<!-- 					<div ng-if="item._expanded"> -->
+<!-- 						<div ng-include="'partials/arearent_det.tpl.html'"></div> -->
+<!-- 					</div> -->
+<!-- 				</md-item> -->
+<!-- 			</md-list> -->
+		</md-content>
+	</md-toolbar>
+</md-card>

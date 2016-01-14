@@ -1,0 +1,45 @@
+<md-card> 
+	<md-toolbar class="demo-toolbar md-default-theme">
+		<div class="md-toolbar-tools">
+			<div class="md-tile-left">
+				<ng-md-icon icon="find_in_page" size="36" style="fill: silver" flex></ng-md-icon>
+			</div>
+			<md-input-container flex="33"> 
+				<label class="aplsearch">Vyhľadať</label> 
+				<input type="text" ng-model="search"> 
+			</md-input-container>
+			<div ng-include="'partials/panel_new.tpl.html'" flex="57"></div>
+		</div>
+				
+		<md-content class="md-padding apllist">
+			<div ng-if="expandedNew">
+				<div ng-include="'partials/area_det.tpl.html'"></div>
+			</div>
+
+			<md-list> 
+				<md-item ng-repeat="item in items | filter:search"> 
+					<div ng-if="!item._expanded" ng-mouseover="hover = true" ng-mouseout="hover = false">
+						<md-item-content>
+							<div class="md-tile-left">
+								<img ng-src="{{item.image}}" class="aplimage" alt="{{item.name}}">
+							</div>
+							<div class="md-tile-content aplcard">
+								<h4>{{item.spcode}}</h4>
+								<p>
+									Adresa: {{item.address}}
+									Rozmer: {{item.dimension}} Poloha: {{item.location}}
+									Umiestnenie: {{item.place}}
+									<br/>Cena NET bez DPH: {{item.netprice}}€
+								</p>
+							</div>
+							<div ng-include="'partials/panel_right.tpl.html'"></div>
+						</md-item-content>
+					</div> 
+					<div ng-if="item._expanded">
+						<div ng-include="'partials/area_det.tpl.html'"></div>
+					</div>
+				</md-item>
+			</md-list>
+		</md-content>
+	</md-toolbar>
+</md-card>

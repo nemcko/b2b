@@ -1,0 +1,35 @@
+<md-card> 
+	<md-toolbar class="demo-toolbar md-default-theme">
+		<div class="md-toolbar-tools">
+			<div class="md-tile-left">
+				<ng-md-icon icon="find_in_page" size="36" style="fill: silver" flex></ng-md-icon>
+			</div>
+			<md-input-container flex="33">
+				<label class="aplsearch">Vyhľadať</label> 
+				<input type="text" ng-model="search"> 
+			</md-input-container>
+		</div>
+				
+		<md-content class="md-padding apllist">
+			<md-list> 
+				<md-item ng-repeat="item in items | filter:search"> 
+					<md-item-content>
+						<div class="md-tile-content aplcard">
+							<h4>Kampaň: {{item.name}} ({{item.campcode}})</h4>
+							<p>
+								<small>Plochy v kampani:</small> 
+								<div layout="row" layout-sm="column" layout-align="start center" layout-margin>
+									<div ng-repeat="area in areas">
+										<md-button ng-class="GetAreaClass(item.areas,area.spcode)" 
+										ng-click="UpdArea(i=item.campcode,m=area.spcode)">{{area.spcode}}</md-button>
+									</div>
+								</div>
+							</p>
+						</div>
+					</md-item-content>
+					<md-divider>
+				</md-item>
+			</md-list>
+		</md-content>
+	</md-toolbar>
+</md-card>

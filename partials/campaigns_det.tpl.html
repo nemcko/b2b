@@ -1,0 +1,193 @@
+<div ng-if="detailType=='det'">
+	<div layout="column" class="apldetail">
+		<md-card-content>
+			<h4>Kampaň</h4>
+			<form name="updateForm">
+				<div layout layout-sm="column">
+					<md-input-container>
+						<label>Kód kampane</label> 
+						<input required name="campcode" ng-model="rowdata.campcode" ng-disabled="!expandedNew">
+						<div ng-messages="updateForm.campcode.$error">
+							<div ng-message="required">Je potrebné zadať.</div>
+						</div>
+					</md-input-container>
+				</div>
+	
+				<div layout layout-sm="column">
+					<md-input-container>
+						<label>Názov kampane</label> 
+						<input name="name" ng-model="rowdata.name">
+					</md-input-container>
+
+					<md-select 	placeholder="Vyberte zákazníka" name="custcode" ng-model="rowdata.custcode" md-on-open="loadCustomers()">
+						<md-select-label>{{ rowdata.custcode ? rowdata.custcode : 'Zákazník' }}</md-select-label>
+						<md-option ng-value="cust.custcode" ng-repeat="cust in customers">
+						{{cust.custcode}}</md-option>
+					</md-select>
+					
+				</div>
+<!-- 				<div layout layout-sm="column"> -->
+<!-- 					<md-input-container> -->
+<!-- 						<label>Priemerný počet cestujúcich</label>  -->
+<!-- 						<input type="number" string-to-number name="avgnumpsg" ng-model="rowdata.avgnumpsg"> -->
+<!-- 					</md-input-container> -->
+<!-- 				</div> -->
+
+		
+				<div layout layout-sm="column">
+					<div flex="33">
+						<small><i>Obrázok</i>
+						<img ng-src="{{rowdata.image}}" alt="{{rowdata.image}}" name="image" ng-model="rowdata.image">
+						<input type="file" onchange="angular.element(this).scope().setFile(this)" xstyle="visibility:hidden;position:absolute;top:-50;left:-50" />
+						</small>
+					</div>
+				</div>
+				
+				
+				<div layout layout-align="start center" layout-wrap>
+					<div layout="row" layout-align="start center">
+						<div>
+							<small>Začiatok kampane :&nbsp;</small>
+						</div>
+						<md-input-container flex="15">
+							<label>Mes.</label> 
+							<input type="number" min="1" max="12" string-to-number name="start_m" ng-model="rowdata.start_m">
+						</md-input-container>
+						<md-input-container flex="30">
+							<label>Rok</label> 
+							<input type="number" min="2014" max="2020" string-to-number name="start_y" ng-model="rowdata.start_y">
+						</md-input-container>
+					</div>
+	
+	
+					<div layout="row" layout-align="start center">
+						<div>
+							<small>Koniec kampane :&nbsp;</small>
+						</div>
+						<md-input-container flex="15">
+							<label>Mes.</label> 
+							<input type="number" min="1" max="12" string-to-number name="end_m" ng-model="rowdata.end_m">
+						</md-input-container>
+						<md-input-container flex="30">
+							<label>Rok</label> 
+							<input type="number" min="2014" max="2020" string-to-number name="end_y" ng-model="rowdata.end_y">
+						</md-input-container>
+					</div>
+				</div>
+
+	
+				<div ng-include="'partials/panel_det.tpl.html'"></div>
+			</form>
+		</md-card-content>
+	</div>
+</div>
+
+
+<div ng-if="detailType==2">
+	<div layout="column" class="apldetail">
+		<md-card-content>
+			<h4>Dĺžka trvania kampane</h4>
+			<div>Kampaň: {{item.name}} ({{item.campcode}})</div>
+			<small>Trvanie kampane: &nbsp;</small>
+
+			
+		</md-card-content>
+	</div>
+</div>
+
+
+<div ng-if="detailType=='datas'">
+	<div layout="column" class="apldetail">
+		<md-card-content>
+			<h4>Údaje kampane</h4>
+			<div>Kampaň: {{item.name}} ({{item.campcode}})</div>
+			<small><i>Rozpis plôch kampane: &nbsp;</i></small>
+
+			
+			<div class="aplcbox" ng-repeat="ardata in item.arearent" layout="row" layout-align="start end" layout-wrap>
+				<div flex="10"><small ng-if="!$index">Plocha</small><div><smal>{{ardata.spcode}}</smal>&nbsp;</div></div>
+				<div><small ng-if="!$index">Rok</small><div><smal>{{ardata.year}}</smal>&nbsp;&nbsp;</div></div>
+
+				<div><small ng-if="!$index">01</small><md-checkbox name="m01" ng-model="ardata.m01" aria-label="Jan" ng-click="saveArearentMon(item,ardata,'m01',ardata.m01)"></md-checkbox></div>
+				<div><small ng-if="!$index">02</small><md-checkbox name="m02" ng-model="ardata.m02" aria-label="Feb" ng-click="saveArearentMon(item,ardata,'m02',ardata.m02)"></md-checkbox></div>
+				<div><small ng-if="!$index">03</small><md-checkbox name="m03" ng-model="ardata.m03" aria-label="Mar" ng-click="saveArearentMon(item,ardata,'m03',ardata.m03)"></md-checkbox></div>
+				<div><small ng-if="!$index">04</small><md-checkbox name="m04" ng-model="ardata.m04" aria-label="Apr" ng-click="saveArearentMon(item,ardata,'m04',ardata.m04)"></md-checkbox></div>
+				<div><small ng-if="!$index">05</small><md-checkbox name="m05" ng-model="ardata.m05" aria-label="Maj" ng-click="saveArearentMon(item,ardata,'m05',ardata.m05)"></md-checkbox></div>
+				<div><small ng-if="!$index">06</small><md-checkbox name="m06" ng-model="ardata.m06" aria-label="Jun" ng-click="saveArearentMon(item,ardata,'m06',ardata.m06)"></md-checkbox></div>
+				<div><small ng-if="!$index">07</small><md-checkbox name="m07" ng-model="ardata.m07" aria-label="Jul" ng-click="saveArearentMon(item,ardata,'m07',ardata.m07)"></md-checkbox></div>
+				<div><small ng-if="!$index">08</small><md-checkbox name="m08" ng-model="ardata.m08" aria-label="Aug" ng-click="saveArearentMon(item,ardata,'m08',ardata.m08)"></md-checkbox></div>
+				<div><small ng-if="!$index">09</small><md-checkbox name="m09" ng-model="ardata.m09" aria-label="Sep" ng-click="saveArearentMon(item,ardata,'m09',ardata.m09)"></md-checkbox></div>
+				<div><small ng-if="!$index">10</small><md-checkbox name="m10" ng-model="ardata.m10" aria-label="Okt" ng-click="saveArearentMon(item,ardata,'m10',ardata.m10)"></md-checkbox></div>
+				<div><small ng-if="!$index">11</small><md-checkbox name="m11" ng-model="ardata.m11" aria-label="Nov" ng-click="saveArearentMon(item,ardata,'m11',ardata.m11)"></md-checkbox></div>
+				<div><small ng-if="!$index">12</small><md-checkbox name="m12" ng-model="ardata.m12" aria-label="Dec" ng-click="saveArearentMon(item,ardata,'m12',ardata.m12)"></md-checkbox></div>
+				<div><small ng-if="!$index">Cena</small><input type="number" id="netprice{{ardata.id}}" name="netprice" ng-model="ardata.netprice" ng-focus="saveArearentPrice(item,ardata,ardata.netprice,true)" ng-blur="saveArearentPrice(item,ardata,ardata.netprice)"></div>
+				<div flex="20"><small ng-if="!$index">Obrázok</small>
+					<input ng-if="!ardata.image" type="file" onchange="angular.element(this).scope().setItemFile(this)" name="image" flex="5" ng-model="ardata.image">
+					<div ng-if="ardata.image"><small>{{ardata.image}}</small></div>
+				</div>
+				
+				<div>
+					<md-popupmenu name="'popup{{$index}}'" direction="'up'" value="'{{ardata.spcode}}'" icon="'more_vert'">
+						<md-menu-item ng-click="saveArearentItems($event,'ny',item,ardata)">Pridať rok</md-menu-item>
+						<md-menu-item ng-click="saveArearentItems($event,'ry',item,ardata)">Vymazať rok</md-menu-item>
+						<md-menu-item ng-click="saveArearentItems($event,'ri',item,ardata)">Vymazať obrázok</md-menu-item>
+					</md-popupmenu>
+				</div>
+			</div>
+
+			<div layout="row" layout-align="end end" layout-margin layout-fill layout-padding>
+				<md-item>
+					<md-button class="md-fab md-hue-2 aplbtnsize" aria-label="Nový"
+						ng-click="newArearent(item)">
+						<ng-md-icon icon="note_add"></ng-md-icon>
+						<md-tooltip class="apltooltip">
+							Nový
+						</md-tooltip>
+					</md-button>
+
+					<md-button class="md-fab md-accent md-hue-2 aplbtnsize" aria-label="Zatvoriť"
+						ng-click="closeDetailEx(item)">
+						<ng-md-icon icon="clear"></ng-md-icon>
+						<md-tooltip class="apltooltip">
+							Zatvoriť
+						</md-tooltip>
+					</md-button>
+				</md-item>
+			</div>
+			
+		</md-card-content>
+	</div>
+</div>
+
+
+<div ng-if="detailType=='areas'">
+	<div layout="column" class="apldetail">
+		<md-card-content>
+			<h4>Plochy v kampani</h4>
+			<div>Kampaň: {{item.name}} ({{item.campcode}})</div>
+			<small>Plochy: &nbsp;</small>
+			
+			<div layout="row" layout-margin layout-fill layout-padding layout-wrap> 
+				<div style="width:160px;" ng-repeat="area in item.areasigns" >
+					<md-checkbox ng-model="area.sign" ng-change="UpdArea(i=item.campcode,m=area.spcode)"
+						aria-label="{{area.spcode}}">{{area.spcode}}</md-checkbox>
+				</div>
+ 			</div>
+
+
+
+			<div layout="row" layout-align="end end" layout-margin layout-fill layout-padding>
+				<md-item>
+					<md-button class="md-fab md-accent md-hue-2 aplbtnsize" aria-label="Zatvoriť"
+						ng-click="closeDetailEx(item)">
+						<ng-md-icon icon="clear"></ng-md-icon>
+						<md-tooltip class="apltooltip">
+							Zatvoriť
+						</md-tooltip>
+					</md-button>
+				</md-item>
+			</div>
+			
+		</md-card-content>
+	</div>
+</div>

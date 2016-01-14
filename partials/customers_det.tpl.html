@@ -1,0 +1,33 @@
+<div layout="column" class="apldetail">
+	<md-card-content>
+		<h4>Zákazník</h4>
+		<form name="updateForm">
+	
+			<md-input-container>
+				<label>Kód zákazníka</label> 
+				<input required name="custcode" ng-model="rowdata.custcode" ng-disabled="!expandedNew">
+				<div ng-messages="updateForm.custcode.$error">
+					<div ng-message="required">Je potrebné zadať.</div>
+				</div>
+			</md-input-container>
+
+			<md-input-container>
+				<label>Názov zákazníka</label> 
+				<input name="name" ng-model="rowdata.name">
+			</md-input-container>
+	
+			<md-input-container>
+				<label>E-mailová adresa</label> 
+				<input required name="email" ng-model="rowdata.email">
+				<div ng-messages="updateForm.email.$error">
+					<div ng-message="required">Je potrebné zadať.</div>
+				</div>
+			</md-input-container>
+	
+	
+			<div class="apldesc">Zadajte údaje potrebné pre evidenciu zákazníkov</div>
+
+			<div ng-include="'partials/panel_det.tpl.html'"></div>
+		</form>
+	</md-card-content>
+</div>

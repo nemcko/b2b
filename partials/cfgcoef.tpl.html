@@ -1,0 +1,47 @@
+<md-card class="aplsize01"> 
+<md-toolbar class="demo-toolbar md-default-theme">
+	
+	<div class="md-toolbar-tools">
+		<span class="ng-binding">Koeficienty výpočtu</span>
+	</div>	
+
+	<md-content>
+		<form name="updateForm">
+			<div class="md-padding" layout="column" layout-margin layout-fill layout-padding>
+				<md-input-container flex>
+					<label>Priemerný počet cestujúich vo vozidle</label>
+					<input type="number" string-to-number name="avgnumpsg" ng-model="items.avgnumpsg">
+				</md-input-container>
+
+				<md-input-container flex>
+					<label>Koeficient A</label> 
+					<input type="number" string-to-number name="coefA" ng-model="items.coefA">
+				</md-input-container>
+	
+				<md-input-container flex>
+					<label>Koeficient B</label> 
+					<input type="number" string-to-number name="coefB" ng-model="items.coefB">
+				</md-input-container>
+
+				<md-input-container flex>
+					<label>Koeficient C</label> 
+					<input type="number" string-to-number name="coefC" ng-model="items.coefC">
+				</md-input-container>
+
+			</div>
+						
+
+		
+			<div layout="row" class="md-padding" layout-margin layout-align="end end">
+			 	<md-list>
+					<md-item><md-button md-no-ink class="md-raised md-primary" ng-click="save($event)">Uložiť </md-button></md-item>
+				</md-list>
+			</div>
+		</form>
+	</md-content>
+</div>
+</md-toolbar>
+</md-card>
+
+</div>
+</div>

@@ -1,0 +1,61 @@
+<md-card class="aplsize01"> 
+<md-toolbar class="demo-toolbar md-default-theme">
+	
+	<div class="md-toolbar-tools">
+		<span class="ng-binding">Konfigurácia Ftp</span>		 
+	</div>	
+
+	<md-content class="md-padding">
+		<form name="updateForm">
+			<md-input-container>
+				<label>Host URL</label>
+				<input required name="ftpHost" ng-model="items.ftpHost">
+				<div ng-messages="updateForm.ftpHost.$error">
+					<div ng-message="required">Je potrebné URL Ftp servera.</div>
+				</div>
+			</md-input-container>
+	
+			<md-input-container>
+				<label>Prístupové meno</label> 
+				<input md-maxlength="32" required name="ftpName" ng-model="items.ftpName">
+				<div ng-messages="updateForm.ftpName.$error">
+					<div ng-message="required">Je potrebné zadať.</div>
+					<div ng-message="md-maxlength">Užívateľské meno môže mať najviac 32 znakov.</div>
+				</div>
+			</md-input-container>
+	
+			<md-input-container>
+				<label>Prístupové heslo</label> 
+				<input type="password" md-maxlength="32" required name="ftpPassword" ng-model="items.ftpPassword">
+				<div ng-messages="updateForm.ftpPassword.$error">
+					<div ng-message="required">Je potrebné zadať.</div>
+					<div ng-message="md-maxlength">Užívateľské heslo môže mať najviac 32 znakov.</div>
+				</div>
+			</md-input-container>
+
+			<md-input-container>
+				<label>Adresár</label> 
+				<input required name="ftpDir" ng-model="items.ftpDir">
+				<div ng-messages="updateForm.ftpDir.$error">
+					<div ng-message="required">Je potrebné zadať.</div>
+				</div>
+			</md-input-container>
+
+			
+			<div class="apldesc">Zadajte meno ppoužívateľa a heslo pre prístup do aplikácie.</div>
+			
+			<div layout="row" layout-align="end end">
+			 	<md-list>
+<!-- 					<md-item><md-button md-no-ink class="md-raised">Test</md-button></md-item> -->
+					<md-item><md-button md-no-ink class="md-raised md-primary" ng-click="save($event)">Uložiť </md-button></md-item>
+				</md-list>
+			</div>
+		
+		</form>
+	</md-content>
+</div>
+</md-toolbar>
+</md-card>
+
+</div>
+</div>

@@ -1,0 +1,31 @@
+<div layout="row" layout-align="end end" layout-margin layout-fill layout-padding>
+ 	<md-list>
+		<md-item>
+			<md-button class="md-fab md-accent md-hue-2 aplbtnsize" aria-label="Zatvoriť detail"
+				ng-click="closeDetail(item)">
+				<ng-md-icon icon="clear"></ng-md-icon>
+				<md-tooltip class="apltooltip">
+					Zatvoriť
+				</md-tooltip>
+			</md-button>
+		</md-item>
+		<md-item>
+			<md-button class="md-fab md-primary md-hue-1 aplbtnsize" aria-label="Uložiť"
+				ng-disabled="updateForm.$invalid"
+				ng-click="save()">
+				<ng-md-icon icon="save"></ng-md-icon>
+				<md-tooltip class="apltooltip">
+					Uložiť
+				</md-tooltip>
+			</md-button>
+		</md-item>
+		<md-item>
+			<md-button class="md-fab md-warn md-hue-2 aplbtnsize" aria-label="Vymazať"
+				ng-if="!expandedNew" ng-click="destroy($event)">
+				<ng-md-icon icon="delete"></ng-md-icon>
+				<md-tooltip class="apltooltip">
+					Vymazať
+				</md-tooltip>
+			</md-button>
+		</md-item>	
+</div>

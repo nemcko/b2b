@@ -1,0 +1,251 @@
+<md-card> 
+	<md-toolbar class="demo-toolbar md-default-theme">
+		<div class="md-toolbar-tools ">
+			<div class="md-tile-left">
+				<ng-md-icon ng-if="!processData" icon="find_in_page" size="36" style="fill: silver" flex></ng-md-icon>
+				<md-progress-circular ng-if="processData" class=" md-hue-3" md-mode="indeterminate"></md-progress-circular>
+			</div>
+			<md-radio-group ng-model="selY" layout="row" layout-align="start start">
+				<md-radio-button ng-repeat="appYear in appYears" ng-value="{{appYear}}">{{appYear}}</md-radio-button>
+			</md-radio-group>
+
+			<div flex="57">
+				<md-button class="md-fab md-hue-1 aplbtnsize" aria-label="Nová položka"
+					ng-if="!processData" ng-click="Calculate()">
+					<ng-md-icon icon="keyboard"></ng-md-icon>
+					<md-tooltip class="apltooltip">
+						Výpočet údajov
+					</md-tooltip>
+				</md-button>
+				<md-button class="md-fab md-hue-1 aplbtnsize" style="float: right !important;"
+					ng-click="ShowLog($event)">
+					<ng-md-icon icon="people_outline"></ng-md-icon>
+					<md-tooltip class="apltooltip">Zobraziť log</md-tooltip>
+				</md-button>
+			</div>
+		</div>
+								
+	</md-toolbar>
+	<md-content class="md-padding apllist"> 
+	
+		<md-tabs md-selected="selM" flex>
+			<md-tab ng-repeat="tab in tabs" label="{{tab.title}}">
+				<div class="tab{{$index%4}}" layout="column">	
+					<md-divider><br/>
+					<div style="overflow-y: hidden;overflow-x: scroll;">
+						<md-list>
+							<md-item ng-repeat="item in items">
+								<b>{{item.spcode}}</b>
+								<div layout="row">
+									<div class="apltitle2"></div>
+									<div class="apltitle2">01</div>
+									<div class="apltitle2">02</div>
+									<div class="apltitle2">03</div>
+									<div class="apltitle2">04</div>
+									<div class="apltitle2">05</div>
+									<div class="apltitle2">06</div>
+									<div class="apltitle2">07</div>
+									<div class="apltitle2">08</div>
+									<div class="apltitle2">09</div>
+									<div class="apltitle2">10</div>
+									<div class="apltitle2">11</div>
+									<div class="apltitle2">12</div>
+									<div class="apltitle2">13</div>
+									<div class="apltitle2">14</div>
+									<div class="apltitle2">15</div>
+									<div class="apltitle2">16</div>
+									<div class="apltitle2">17</div>
+									<div class="apltitle2">18</div>
+									<div class="apltitle2">19</div>
+									<div class="apltitle2">20</div>
+									<div class="apltitle2">21</div>
+									<div class="apltitle2">22</div>
+									<div class="apltitle2">23</div>
+									<div class="apltitle2">24</div>
+									<div class="apltitle2">25</div>
+									<div class="apltitle2">26</div>
+									<div class="apltitle2">27</div>
+									<div class="apltitle2">28</div>
+									<div class="apltitle2">29</div>
+									<div class="apltitle2">30</div>
+									<div class="apltitle2">31</div>
+								</div>
+								<div layout="row">
+									<div class="apltitle2">IN</div>
+									<div class="apltitle1">{{item.in01}}</div>
+									<div class="apltitle1">{{item.in02}}</div>
+									<div class="apltitle1">{{item.in03}}</div>
+									<div class="apltitle1">{{item.in04}}</div>
+									<div class="apltitle1">{{item.in05}}</div>
+									<div class="apltitle1">{{item.in06}}</div>
+									<div class="apltitle1">{{item.in07}}</div>
+									<div class="apltitle1">{{item.in08}}</div>
+									<div class="apltitle1">{{item.in09}}</div>
+									<div class="apltitle1">{{item.in10}}</div>
+									<div class="apltitle1">{{item.in11}}</div>
+									<div class="apltitle1">{{item.in12}}</div>
+									<div class="apltitle1">{{item.in13}}</div>
+									<div class="apltitle1">{{item.in14}}</div>
+									<div class="apltitle1">{{item.in15}}</div>
+									<div class="apltitle1">{{item.in16}}</div>
+									<div class="apltitle1">{{item.in17}}</div>
+									<div class="apltitle1">{{item.in18}}</div>
+									<div class="apltitle1">{{item.in19}}</div>
+									<div class="apltitle1">{{item.in20}}</div>
+									<div class="apltitle1">{{item.in21}}</div>
+									<div class="apltitle1">{{item.in22}}</div>
+									<div class="apltitle1">{{item.in23}}</div>
+									<div class="apltitle1">{{item.in24}}</div>
+									<div class="apltitle1">{{item.in25}}</div>
+									<div class="apltitle1">{{item.in26}}</div>
+									<div class="apltitle1">{{item.in27}}</div>
+									<div class="apltitle1">{{item.in28}}</div>
+									<div class="apltitle1">{{item.in29}}</div>
+									<div class="apltitle1">{{item.in30}}</div>
+									<div class="apltitle1">{{item.in31}}</div>
+								</div>
+								<div layout="row">
+									<div class="apltitle2">OU</div>
+									<div class="apltitle1">{{item.ou01}}</div>
+									<div class="apltitle1">{{item.ou02}}</div>
+									<div class="apltitle1">{{item.ou03}}</div>
+									<div class="apltitle1">{{item.ou04}}</div>
+									<div class="apltitle1">{{item.ou05}}</div>
+									<div class="apltitle1">{{item.ou06}}</div>
+									<div class="apltitle1">{{item.ou07}}</div>
+									<div class="apltitle1">{{item.ou08}}</div>
+									<div class="apltitle1">{{item.ou09}}</div>
+									<div class="apltitle1">{{item.ou10}}</div>
+									<div class="apltitle1">{{item.ou11}}</div>
+									<div class="apltitle1">{{item.ou12}}</div>
+									<div class="apltitle1">{{item.ou13}}</div>
+									<div class="apltitle1">{{item.ou14}}</div>
+									<div class="apltitle1">{{item.ou15}}</div>
+									<div class="apltitle1">{{item.ou16}}</div>
+									<div class="apltitle1">{{item.ou17}}</div>
+									<div class="apltitle1">{{item.ou18}}</div>
+									<div class="apltitle1">{{item.ou19}}</div>
+									<div class="apltitle1">{{item.ou20}}</div>
+									<div class="apltitle1">{{item.ou21}}</div>
+									<div class="apltitle1">{{item.ou22}}</div>
+									<div class="apltitle1">{{item.ou23}}</div>
+									<div class="apltitle1">{{item.ou24}}</div>
+									<div class="apltitle1">{{item.ou25}}</div>
+									<div class="apltitle1">{{item.ou26}}</div>
+									<div class="apltitle1">{{item.ou27}}</div>
+									<div class="apltitle1">{{item.ou28}}</div>
+									<div class="apltitle1">{{item.ou29}}</div>
+									<div class="apltitle1">{{item.ou30}}</div>
+									<div class="apltitle1">{{item.ou31}}</div>
+								</div>
+								<div layout="row">
+									<div class="apltitle2">IO</div>
+									<div class="apltitle1">{{item.io01}}</div>
+									<div class="apltitle1">{{item.io02}}</div>
+									<div class="apltitle1">{{item.io03}}</div>
+									<div class="apltitle1">{{item.io04}}</div>
+									<div class="apltitle1">{{item.io05}}</div>
+									<div class="apltitle1">{{item.io06}}</div>
+									<div class="apltitle1">{{item.io07}}</div>
+									<div class="apltitle1">{{item.io08}}</div>
+									<div class="apltitle1">{{item.io09}}</div>
+									<div class="apltitle1">{{item.io10}}</div>
+									<div class="apltitle1">{{item.io11}}</div>
+									<div class="apltitle1">{{item.io12}}</div>
+									<div class="apltitle1">{{item.io13}}</div>
+									<div class="apltitle1">{{item.io14}}</div>
+									<div class="apltitle1">{{item.io15}}</div>
+									<div class="apltitle1">{{item.io16}}</div>
+									<div class="apltitle1">{{item.io17}}</div>
+									<div class="apltitle1">{{item.io18}}</div>
+									<div class="apltitle1">{{item.io19}}</div>
+									<div class="apltitle1">{{item.io20}}</div>
+									<div class="apltitle1">{{item.io21}}</div>
+									<div class="apltitle1">{{item.io22}}</div>
+									<div class="apltitle1">{{item.io23}}</div>
+									<div class="apltitle1">{{item.io24}}</div>
+									<div class="apltitle1">{{item.io25}}</div>
+									<div class="apltitle1">{{item.io26}}</div>
+									<div class="apltitle1">{{item.io27}}</div>
+									<div class="apltitle1">{{item.io28}}</div>
+									<div class="apltitle1">{{item.io29}}</div>
+									<div class="apltitle1">{{item.io30}}</div>
+									<div class="apltitle1">{{item.io31}}</div>
+								</div>
+								<div layout="row">
+									<div class="apltitle2 apltitlerow">Spolu</div>
+									<div class="apltitle1 apltitlerow">{{item.sum01}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum02}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum03}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum04}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum05}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum06}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum07}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum08}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum09}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum10}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum11}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum12}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum13}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum14}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum15}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum16}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum17}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum18}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum19}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum20}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum21}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum22}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum23}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum24}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum25}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum26}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum27}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum28}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum29}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum30}}</div>
+									<div class="apltitle1 apltitlerow">{{item.sum31}}</div>
+								</div>
+								
+								<small>
+									<md-button class="md-primary" ng-href="api/index.php/areafiles/{{item.spcode.replace('/','@@')}}/P/{{selY}}/{{selM+1}}" target="_self">
+										<ng-md-icon icon="arrow_back"></ng-md-icon>
+										Príjazd
+									</md-button>
+									<md-button class="md-primary" ng-href="api/index.php/areafiles/{{item.spcode.replace('/','@@')}}/V/{{selY}}/{{selM+1}}" target="_self">
+										<ng-md-icon icon="arrow_forward"></ng-md-icon>
+										Výjazd
+									</md-button>
+									<md-button class="md-primary" ng-href="api/index.php/areafiles/{{item.spcode.replace('/','@@')}}/X/{{selY}}/{{selM+1}}" target="_self">
+										<ng-md-icon icon="settings_ethernet"></ng-md-icon>
+										Príjazd+Výjazd
+									</md-button>
+									<md-button class="md-primary" ng-href="api/index.php/areafiles/{{item.spcode.replace('/','@@')}}/G/{{selY}}/{{selM+1}}" target="_self">
+										<ng-md-icon icon="trending_up"></ng-md-icon>
+										Graf
+									</md-button>
+								</small>
+								
+								<br/><br/>
+							</md-item>
+						
+						</md-list>
+					</div>
+
+
+
+
+
+
+
+
+				</div>
+			</md-tab>
+		</md-tabs>
+		<md-divider md-inset></md-divider>
+		<br>
+	
+
+	</md-content>
+
+</md-card>

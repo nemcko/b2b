@@ -1,0 +1,42 @@
+<md-content class="md-padding apldetail">
+	<h4>Kamery reklamnej plochy {{item.spcode}}</h4>
+	<form name="updateForm">
+		<div layout="row" layout-align="start start" layout-wrap>
+			<div ng-repeat="camera in cameras">
+					<fieldset layout="column">
+						<legend>
+							<md-button ng-class="GetCameraClass(item.cameras,camera)" 
+								ng-click="UpdCam(i=item.spcode,m=camera)">{{camera}}
+							</md-button>
+						</legend>
+						<small>
+							<small>Smer snímania:<br></small>
+							<md-button ng-class="GetViewClass(item.viewtypes,camera,'I')" 
+								ng-disabled="isCamDisabled(item.cameras,camera)" ng-click="UpdCamview(i=item.spcode,m=camera,'I')">&nbsp;&nbsp;IN&nbsp;&nbsp;
+							</md-button>
+							<md-button ng-class="GetViewClass(item.viewtypes,camera,'O')" 
+								ng-disabled="isCamDisabled(item.cameras,camera)" ng-click="UpdCamview(i=item.spcode,m=camera,'O')">OU
+							</md-button>
+							<md-button ng-class="GetViewClass(item.viewtypes,camera,'IO')" 
+								ng-disabled="isCamDisabled(item.cameras,camera)" ng-click="UpdCamview(i=item.spcode,m=camera,'IO')">IO
+							</md-button>
+						</small>
+				</md-checkbox>
+			</div>
+		</div>
+
+		
+		<div layout="row" layout-align="end end" layout-margin layout-fill layout-padding>
+			<md-item>
+				<md-button class="md-fab md-accent md-hue-2 aplbtnsize" aria-label="Zatvoriť detail"
+					ng-click="closeDetail(item)">
+					<ng-md-icon icon="clear"></ng-md-icon>
+					<md-tooltip class="apltooltip">
+						Zatvoriť
+					</md-tooltip>
+				</md-button>
+			</md-item>
+		</div>
+	</form>
+
+</md-content>

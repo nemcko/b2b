@@ -1,0 +1,62 @@
+<md-content class="md-padding apldetail">
+	<h4>Reklamná plocha</h4>
+	<form name="updateForm">
+	<div layout layout-sm="column">
+		<md-input-container flex="30">
+			<label>Interné označenie</label>
+			<input md-maxlength="15" required name="spcode" ng-model="rowdata.spcode" ng-disabled="!expandedNew">
+			<div ng-messages="updateForm.spcode.$error">
+				<div ng-message="required">Je potrebné zadať.</div>
+				<div ng-message="md-maxlength">Označenie bigboardu o môže mať najviac 15 znakov.</div>
+			</div>
+		</md-input-container>
+	</div>
+	<div layout layout-sm="column">
+		<md-input-container flex="70">
+			<label>Názov/označenie bigboardu</label>
+			<input name="name" ng-model="rowdata.name">
+		</md-input-container>
+	</div>	
+	<div layout layout-sm="column">
+		<md-input-container flex>
+			<label>Adresa bigboardu</label>
+			<input name="address" ng-model="rowdata.address">
+		</md-input-container>
+		<md-input-container flex>
+			<label>Rozmer</label>
+			<input name="dimension" ng-model="rowdata.dimension">
+		</md-input-container>
+		<md-input-container flex>
+			<label>Poloha</label>
+			<input name="location" ng-model="rowdata.location">
+		</md-input-container>
+	</div>
+	<div layout layout-sm="column">
+		<md-input-container flex>
+			<label>Umiestnenie</label>
+			<input name="place" ng-model="rowdata.place">
+		</md-input-container>
+	</div>
+	<div layout layout-sm="column">
+		<md-input-container flex="33">
+			<label>Cena brutto bez DPH</label>
+			<input name="bruprice" type="number" ng-model="rowdata.bruprice">
+		</md-input-container>
+	</div>
+
+	<div layout layout-sm="column">
+		<div flex="33">
+			<small>Obrázok
+			<img ng-src="{{rowdata.image}}" alt="{{rowdata.image}}" name="image" ng-model="rowdata.image">
+			<input type="file" onchange="angular.element(this).scope().setFile(this)" xstyle="visibility:hidden;position:absolute;top:-50;left:-50" />
+			</small>
+		</div>
+	</div>
+
+
+
+		<div ng-include="'partials/panel_det.tpl.html'"></div>
+		</md-list>
+	</form>
+
+</md-content>

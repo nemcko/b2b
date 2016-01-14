@@ -1,0 +1,30 @@
+<div layout="column" class="apldetail">
+	<md-card-content>
+		<form name="updateForm">
+	
+			<md-input-container>
+				<label>Používateľské meno</label> 
+				<input md-maxlength="32" required name="UserName" ng-model="rowdata.UserName">
+				<div ng-messages="updateForm.UserName.$error">
+					<div ng-message="required">Je potrebné zadať.</div>
+					<div ng-message="md-maxlength">Užívateľské meno môže mať najviac 32 znakov.</div>
+				</div>
+			</md-input-container>
+	
+			<md-input-container>
+				<label>Prístupové heslo</label> 
+				<input type="password" md-maxlength="32" name="UserPassword" ng-model="rowdata.UserPassword">
+			</md-input-container>
+			
+			<md-input-container>
+				<label>Popis</label>
+				<input name="UserDescription" ng-model="rowdata.UserDescription">
+			</md-input-container>
+
+			
+			<div class="apldesc">Zadajte údaje potrebné pre prihlásenie sa používateľa aplikácie</div>
+							
+			<div ng-include="'partials/panel_det.tpl.html'"></div>
+		</form>
+	</md-card-content>
+</div>
